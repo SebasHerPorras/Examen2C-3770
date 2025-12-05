@@ -59,6 +59,11 @@ builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.Logging.AddDebug();
 
+// -------------------------------
+// CONFIGURAR URLS
+// -------------------------------
+builder.WebHost.UseUrls("http://localhost:5059", "https://localhost:7183");
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -67,10 +72,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseHttpsRedirection();
+}
 
 app.UseCors("AllowVueFrontend");
-
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
