@@ -42,7 +42,7 @@ namespace ExamTwo.Services
                 return Task.FromResult(new OrderResultDto
                 {
                     Success = false,
-                    Message = "Precio insuficiente para uno o m�s productos"
+                    Message = "Price information not available"
                 });
             }
 
